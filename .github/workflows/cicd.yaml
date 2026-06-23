@@ -9,7 +9,7 @@ jobs:
 Continuous-Integration:
 runs-on: ubuntu-latest
 
-```
+
 steps:
   - name: Checkout
     uses: actions/checkout@v4
@@ -33,13 +33,13 @@ steps:
     run: |
       docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
       docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-```
+
 
 Continuous-Deployment:
 needs: Continuous-Integration
 runs-on: self-hosted
 
-```
+
 steps:
   - name: Configure AWS credentials
     uses: aws-actions/configure-aws-credentials@v4
@@ -79,4 +79,4 @@ steps:
       sleep 10
       docker ps -a
       docker logs medical-chatbot --tail 50 || true
-```
+
