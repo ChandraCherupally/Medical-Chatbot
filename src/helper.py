@@ -5,7 +5,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 from typing import List
 from langchain_core.output_parsers import StrOutputParser
-from prompt import *
+from src.prompt import *
 
 #1. Extract Data From the PDF File
 def load_pdf_files(data) -> List[Document]:
