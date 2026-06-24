@@ -68,6 +68,8 @@ jobs:
           -e AWS_DEFAULT_REGION="${{ secrets.AWS_DEFAULT_REGION }}" \
           -e PINECONE_API_KEY="${{ secrets.PINECONE_API_KEY }}" \
           -e GEMINI_API_KEY="${{ secrets.GEMINI_API_KEY }}" \
+          -e GROQ_API_KEY="${{ secrets.GROQ_API_KEY }}" \
+          -e HF_TOKEN="${{ secrets.HF_TOKEN }}" \
           ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPO }}:latest
       
       - name: Verify container
