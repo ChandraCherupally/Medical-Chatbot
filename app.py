@@ -34,8 +34,9 @@ def initialize():
         embeddings = download_embeddings()
 
         logger.info("Connecting Pinecone")
-        docsearch = PineconeVectorStore.from_existing_index(index_name="medical-chatbot-st-all-minilm",embedding=embeddings)
-
+        #docsearch = PineconeVectorStore.from_existing_index(index_name="medical-chatbot-st-all-minilm",embedding=embeddings)
+        docsearch = PineconeVectorStore.from_existing_index(index_name="medical-chatbot-gemini",embedding=embeddings)
+        
         retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k": 3})
         
         logger.info("Initializing Groq & Gimini")

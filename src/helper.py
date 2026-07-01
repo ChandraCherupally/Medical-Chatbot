@@ -1,8 +1,8 @@
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
+#from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.documents import Document
-
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_core.output_parsers import StrOutputParser
 from src.prompt import *
 from src.logger_config import setup_logger
@@ -55,7 +55,8 @@ def text_splitter(minimal_docs: List[Document]) -> List[Document]:
 def download_embeddings():
     "Downloads the embeddings from HuggingFace and returns the embeddings object."
     logger.info("Loading embeddings model")
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    #embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001")
     logger.info("Embeddings loaded successfully")
     return embeddings
 

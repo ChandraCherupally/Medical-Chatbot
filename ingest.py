@@ -24,12 +24,14 @@ os.environ["PINECONE_API_KEY"] = os.getenv("PINECONE_API_KEY")
 # Configuration
 # --------------------------------------------------
 
-INDEX_NAME = "medical-chatbot-st-all-minilm"
+#INDEX_NAME = "medical-chatbot-st-all-minilm"
+INDEX_NAME = "medical-chatbot-gemini"
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 if not pc.has_index(INDEX_NAME):
     pc.create_index(
         name=INDEX_NAME,
-        dimension=384,
+        #dimension=384,
+        dimension=3072,
         metric="cosine",
         spec=ServerlessSpec(
         cloud="aws",
